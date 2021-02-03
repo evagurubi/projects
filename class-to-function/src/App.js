@@ -1,18 +1,14 @@
 import React, { Component } from "react";
+import {useState} from "react";
 import "./App.css";
 import CardList from "./ColorCard/ListOfCards.js";
 import Searchbar from "./Searchbar/Searchbar.js";
 
-class App extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      search: "",
-    };
-    this.setState = this.setState.bind(this);
-  }
+function App () {
 
-  componentDidMount() {
+  const [search, setSearch] = useState("")
+  
+  /*componentDidMount() {
     document.addEventListener("click", this.welcome);
   }
 
@@ -22,16 +18,15 @@ class App extends Component {
 
   welcome = () => {
     alert("Hello!");
-  };
+  };*/
 
-  render() {
-    return (
+      return (
       <div>
-        <Searchbar search={this.setState} />
-        <CardList search={this.state.search} />
+        <Searchbar search={setSearch} />
+        <CardList search={search} />
       </div>
     );
-  }
+
 }
 
 export default App;

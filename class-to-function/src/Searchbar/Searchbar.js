@@ -1,15 +1,11 @@
 import React, { Component } from "react";
 import styled from "styled-components";
+import {useState} from "react";
 
-class Searchbar extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      search: "",
-    };
-  }
+function Searchbar (props) {
+  const [inputText, setInputText] = useState("");
 
-  Input = styled.input`
+  /*Input = styled.input`
     margin: 10px auto;
     background: linear-gradient(
       90deg,
@@ -18,24 +14,22 @@ class Searchbar extends Component {
       rgba(0, 212, 255, 1) 100%
     );
     color: yellow;
-  `;
+  `;*/
 
-  componentDidUpdate(preProps, prevState) {
-    if (prevState.search !== this.state.search)
-      this.props.search({ search: this.state.search });
-  }
+  
 
-  onChangeHandler = (event) => {
-    this.setState({ search: event.target.value });
+  const onChangeHandler = (event) => {
+        setInputText(event.target.value );
   };
 
-  render() {
+  
     return (
       <div>
-        <this.Input onChange={this.onChangeHandler} autoFocus />
+        <input value= {inputText}
+        onChange={onChangeHandler} autoFocus />
       </div>
     );
-  }
+  
 }
 
 export default Searchbar;

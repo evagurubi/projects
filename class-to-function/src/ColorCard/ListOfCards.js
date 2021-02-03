@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import Card from "./Card.js";
 import colors from "../data/colors.json";
 
-class CardList extends Component {
+function CardList (props) {
   constructor(props) {
     super(props);
     this.state = {
@@ -14,8 +14,8 @@ class CardList extends Component {
     if (prevProps.search !== this.props.search) {
       const results = colors.filter(
         (color) =>
-          color.name.includes(this.props.search) ||
-          color.hex.includes(this.props.search)
+          color.name.includes(props.search) ||
+          color.hex.includes(props.search)
       );
       this.setState({ results });
     }
