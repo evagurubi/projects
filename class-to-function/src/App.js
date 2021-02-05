@@ -1,37 +1,42 @@
-import React, { Component } from "react";
+import React, { useState, useEffect } from "react";
 import "./App.css";
 import CardList from "./ColorCard/ListOfCards.js";
 import Searchbar from "./Searchbar/Searchbar.js";
 
-class App extends Component {
-  constructor(props) {
+function App(props) {
+
+  const [search, setSearch] = useState("")
+  /*constructor(props) {
     super(props);
     this.state = {
       search: "",
     };
-    this.setState = this.setState.bind(this);
-  }
+    /*setState = setState();
+  }*/
 
-  componentDidMount() {
-    document.addEventListener("click", this.welcome);
-  }
+  useEffect(()=> {
+    console.log('component mounted!')
+  }, [])
 
-  componentWillUnmount() {
-    document.removeEventListener("click", this.welcome);
-  }
+  useEffect(()=> {
+    console.log('component mounted')
+    return () => {
+      console.log('component will unmount')
+    }
+  }, [])
 
-  welcome = () => {
+  const welcome = () => {
     alert("Hello!");
   };
 
-  render() {
+  
     return (
       <div>
-        <Searchbar search={this.setState} />
-        <CardList search={this.state.search} />
+        <Searchbar search={setSearch} />
+        <CardList search={search} />
       </div>
     );
-  }
+  
 }
 
 export default App;

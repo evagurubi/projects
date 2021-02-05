@@ -1,7 +1,7 @@
-import React, { Component } from "react";
+import React, { useState } from "react";
 import styled, { ThemeProvider } from "styled-components";
 
-class Card extends Component {
+function Card (props) {
   Div = styled.div`
     width: 100%;
     height: 150px;
@@ -18,15 +18,15 @@ class Card extends Component {
     };
   }
 
-  render() {
-    const theme = {
-      backgroundColor: this.props.color.hex,
-    };
+  
+    {const theme = {
+      backgroundColor: props.color.hex}
+    
     return (
       <ThemeProvider theme={theme}>
-        <this.Div>
-          <h1>{this.props.color.name}</h1>
-        </this.Div>
+        <Div>
+          <h1>{props.color.name}</h1>
+        </Div>
       </ThemeProvider>
     );
   }
