@@ -3,17 +3,29 @@ import Card from "./Card.js";
 import colors from "../data/colors.json";
 
 function CardList(props) {
-  const [results, setResult] = useState([]);
+  const [results, setResult] = useState(colors);
+  const [prevSearch, setPrevSearch] = useState("");
+
+  const [currentSearch, setCurrentSearch] = useState();
 
   useEffect(() => {
-    if (results !== props.search) {
+    if (prevSearch !== props.search) {
       const results = colors.filter(
         (color) =>
           color.name.includes(props.search) || color.hex.includes(props.search)
       );
       setResult(results);
     }
-  }, [props.search, results]);
+    setPrevSearch(props.search);
+  }, [props.search]);
+
+  /* useEffect(() => {
+    const results = colors.filter(
+      (color) =>
+        color.name.includes(props.search) || color.hex.includes(props.search)
+    );
+    setResult(results);
+  }, []);*/
 
   return (
     <div className="container">

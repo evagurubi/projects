@@ -4,8 +4,7 @@ import CardList from "./ColorCard/ListOfCards.js";
 import Searchbar from "./Searchbar/Searchbar.js";
 
 function App(props) {
-
-  const [search, setSearch] = useState("")
+  const [search, setSearch] = useState("");
   /*constructor(props) {
     super(props);
     this.state = {
@@ -14,29 +13,23 @@ function App(props) {
     /*setState = setState();
   }*/
 
-  useEffect(()=> {
-    console.log('component mounted!')
-  }, [])
-
-  useEffect(()=> {
-    console.log('component mounted')
+  useEffect(() => {
+    document.addEventListener("click", welcome);
     return () => {
-      console.log('component will unmount')
-    }
-  }, [])
+      document.removeEventListener("click", welcome);
+    };
+  }, []);
 
   const welcome = () => {
     alert("Hello!");
   };
 
-  
-    return (
-      <div>
-        <Searchbar search={setSearch} />
-        <CardList search={search} />
-      </div>
-    );
-  
+  return (
+    <div>
+      <Searchbar search={setSearch} />
+      <CardList search={search} />
+    </div>
+  );
 }
 
 export default App;
